@@ -1,0 +1,22 @@
+{
+    "jordan 1": [
+        {
+            "colourway": "Obsidian",
+            "size": 9.5,
+            "price": 520
+        },
+        {
+            "colourway": "Mocha",
+            "size": 11,
+            "price": 350
+        }
+    ],
+
+    "yeezy 350": [
+        {
+            "colourway": "Cream",
+            "size": 5.5,
+            "price": 300
+        }
+    ]
+}
