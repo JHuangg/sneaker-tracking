@@ -1,22 +1,24 @@
 {
-    "jordan 1": [
-        {
-            "colourway": "Obsidian",
-            "size": 9.5,
-            "price": 520
-        },
-        {
-            "colourway": "Mocha",
-            "size": 11,
-            "price": 350
-        }
-    ],
-
-    "yeezy 350": [
-        {
-            "colourway": "Cream",
-            "size": 5.5,
-            "price": 300
-        }
-    ]
+  "555088-140": [{
+    "model": "Jordan 1 Obsidian",
+    "size": 9.5,
+    "price": 520
+  }],
+  "JORDAN": [{
+    "model": "Jordan 1 Mocha ",
+    "size": 11,
+    "price": 350
+  }],
+  "YEEZY": [
+    {
+      "model": "Yeezy 350 Cream",
+      "size": 5.5,
+      "price": 300
+    },
+    {
+      "model": "Yeezy 350 Cream",
+      "size": 6,
+      "price": 300
+    }
+  ]
 }
