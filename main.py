@@ -22,8 +22,20 @@ Simple Shoe Inventory Tracking System
             viewInventory()
             break
 
-        if option == 2:
+        elif option == 2:
             viewSpecificInventory()
+            break
+        
+        elif option == 3:
+            addItems()
+            break
+
+        elif option == 4:
+            removeItems()
+            break
+
+        elif option == 5:
+            editItems()
             break
 
 def viewInventory():
@@ -56,17 +68,37 @@ def viewSpecificInventory():
     returnToMainMenu()
 
 def addItems():
-    sku = input('Enter the SKU you wish to add: ')
+    clear()
+    addSku = input('Enter the SKU you wish to add: ').upper()
+    addModel = input('Enter the model name: ').capitalize()
+    addSize = float(input('Enter the product size: '))
+    addPrice = float(input('Enter the product price: '))
 
-    #Check if item exists
+    newItem = {'model': addModel, 'size:': addSize, 'price:': addPrice}
+    newList = [newItem]
 
-    removeMore = input ('Would you like to remove more items? (y/n): ').lower().strip()
+    with open('inventory.txt', 'r') as inv:
+        currInventory = json.loads(inv.read())
+
+    if currInventory.get(addSku) is not None:
+        for i,value in enumerate(currInventory):
+            if(value == addSku):
+                currShoe = currInventory[value]
+                currShoe.append(newItem)
+    else:
+        currInventory[addSku] = newList
+
+    with open('inventory.txt', "w") as invFile:
+        json.dump(currInventory, invFile, sort_keys = True, indent = 1)
+
+    removeMore = input ('Would you like to add more items? (y/n): ').lower().strip()
     if removeMore == 'y':
         removeItems()
     elif removeMore == 'n':
         returnToMainMenu()
 
 def removeItems():
+    clear()
     sku = input('Enter the SKU you wish to remove: ')
 
     #Check if item exists
@@ -78,6 +110,7 @@ def removeItems():
         returnToMainMenu()
 
 def editItems():
+    clear()
     sku = input('Enter the SKU you wish to edit: ')
     
 
