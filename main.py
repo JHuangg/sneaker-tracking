@@ -74,7 +74,7 @@ def addItems():
     addSize = float(input('Enter the product size: '))
     addPrice = float(input('Enter the product price: '))
 
-    newItem = {'model': addModel, 'size:': addSize, 'price:': addPrice}
+    newItem = {'model': addModel, 'size': addSize, 'price': addPrice}
     newList = [newItem]
 
     with open('inventory.txt', 'r') as inv:
@@ -99,15 +99,40 @@ def addItems():
 
 def removeItems():
     clear()
-    sku = input('Enter the SKU you wish to remove: ')
+    removeSku = input('Enter the SKU you wish to remove: ').upper().strip()
 
-    #Check if item exists
+    with open('inventory.txt', 'r') as inv:
+        currInventory = json.loads(inv.read())
+
+    if currInventory.get(removeSku) is not None:
+        for key, value in list(currInventory.items()):
+            if key == removeSku:
+                skuList = currInventory[key]
+                if (len(skuList) > 1):
+                    tooManySku = float(input("You currently own more than one of this sku, please select the size you wish to remove: "))
+                    for skuKey, skuValue in enumerate(skuList):
+                       if(skuList[skuKey]['size'] == tooManySku):
+                           skuList.pop(skuKey)
+                else:
+                    del(currInventory[key])
+
+            else:
+                print('You currently do not own that SKU')
+
+    with open('inventory.txt', "w") as invFile:
+        json.dump(currInventory, invFile, sort_keys = True, indent = 1)
 
     removeMore = input ('Would you like to remove more items? (y/n): ').lower().strip()
     if removeMore == 'y':
         removeItems()
     elif removeMore == 'n':
         returnToMainMenu()
+
+def doesSkuExist(invTest, skuTest):
+    if invTest.get(skuTest) is not None:
+        return True
+    else:
+        return False
 
 def editItems():
     clear()
