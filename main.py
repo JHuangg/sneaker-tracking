@@ -12,8 +12,7 @@ Simple Shoe Inventory Tracking System
 2. View Specific Model Inventory
 3. Add Item to Inventory
 4. Remove Item from Inventory
-5. Edit Items
-6. Exit
+5. Exit
     ''')
 
     while True:
@@ -32,10 +31,6 @@ Simple Shoe Inventory Tracking System
 
         elif option == 4:
             removeItems()
-            break
-
-        elif option == 5:
-            editItems()
             break
 
 def viewInventory():
@@ -109,15 +104,15 @@ def removeItems():
             if key == removeSku:
                 skuList = currInventory[key]
                 if (len(skuList) > 1):
-                    tooManySku = float(input("You currently own more than one of this sku, please select the size you wish to remove: "))
+                    tooManySku = input("You currently own more than one of this sku, please select the model you wish to remove: ").capitalize()
                     for skuKey, skuValue in enumerate(skuList):
-                       if(skuList[skuKey]['size'] == tooManySku):
-                           skuList.pop(skuKey)
+                       if(skuList[skuKey]['model'] == tooManySku):
+                        skuList.pop(skuKey)
                 else:
                     del(currInventory[key])
 
-            else:
-                print('You currently do not own that SKU')
+    else:
+        print('You currently do not own that SKU')
 
     with open('inventory.txt', "w") as invFile:
         json.dump(currInventory, invFile, sort_keys = True, indent = 1)
@@ -128,16 +123,15 @@ def removeItems():
     elif removeMore == 'n':
         returnToMainMenu()
 
-def doesSkuExist(invTest, skuTest):
-    if invTest.get(skuTest) is not None:
-        return True
-    else:
-        return False
-
-def editItems():
-    clear()
-    sku = input('Enter the SKU you wish to edit: ')
-    
+def doesSkuExist(invTest, object):
+    for key, value in list(invTest.items()):
+            if key == object:
+                skuList = invTest[key]
+                if (len(skuList) > 1):
+                    return('You currently own more than one model of this sku.')
+                else:
+                    del(invTest[key])
+                    return invTest
 
 def returnToMainMenu():
     returnMenu = input('Return to main menu? (y/n): ').lower().strip()

@@ -1,24 +1,43 @@
 {
-  "555088-140": [{
-    "model": "Jordan 1 Obsidian",
-    "size": 9.5,
-    "price": 520
-  }],
-  "JORDAN": [{
-    "model": "Jordan 1 Mocha ",
-    "size": 11,
-    "price": 350
-  }],
-  "YEEZY": [
-    {
-      "model": "Yeezy 350 Cream",
-      "size": 5.5,
-      "price": 300
-    },
-    {
-      "model": "Yeezy 350 Cream",
-      "size": 6,
-      "price": 300
-    }
-  ]
+ "555088-140": [
+  {
+   "model": "Jordan 1 Obsidian",
+   "price": 520,
+   "size": 9.5
+  },
+  {
+   "model": "Jordan 1 Chicago",
+   "price": 350,
+   "size": 11
+  }
+ ],
+ "JORDAN": [
+  {
+   "model": "Jordan 1 Mocha ",
+   "price": 350,
+   "size": 11
+  }
+ ],
+ "YEEZY": [
+  {
+   "model": "Yeezy 350 Cream",
+   "price": 300,
+   "size": 5.5
+  },
+  {
+   "model": "Yeezy 350 Cream",
+   "price": 300,
+   "size": 6
+  },
+  {
+   "model": "Bred 350",
+   "price": 500.0,
+   "size": 10.0
+  },
+  {
+   "model": "Glow",
+   "price": 120.0,
+   "size": 8.0
+  }
+ ]
 }
